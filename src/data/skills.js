@@ -12,7 +12,11 @@ export const skillCategories = [
     title: 'Core Computer Science',
     icon: Cpu,
     span: 'lg:col-span-3',
-    items: ['Data Structures & Algorithms', 'Object-Oriented Programming', 'Debugging'],
+    items: [
+      'Data Structures & Algorithms',
+      'Object-Oriented Programming',
+      'Debugging',
+    ],
   },
   {
     title: 'Web Development',
@@ -20,25 +24,40 @@ export const skillCategories = [
     span: 'lg:col-span-6',
     items: [
       'React',
-      'Node.js',
+      'TypeScript',
       'JavaScript',
       'HTML',
       'CSS',
+      'REST APIs',
+      'WebSockets',
       'Responsive Web Design',
-      'DOM Manipulation',
     ],
   },
   {
-    title: 'Databases',
+    title: 'Backend & Databases',
     icon: Database,
     span: 'lg:col-span-3',
-    items: ['SQL', 'MySQL'],
+    items: [
+      'Spring Boot',
+      'Spring Security',
+      'Spring Data JPA',
+      'Hibernate',
+      'PostgreSQL',
+      'SQL',
+      'Flyway',
+    ],
   },
   {
     title: 'Developer Tools',
     icon: Wrench,
     span: 'lg:col-span-3',
-    items: ['Git', 'GitHub', 'VS Code'],
+    items: [
+      'Git',
+      'GitHub',
+      'Docker',
+      'Docker Compose',
+      'VS Code',
+    ],
   },
 ];
 

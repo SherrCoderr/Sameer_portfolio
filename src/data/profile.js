@@ -6,7 +6,7 @@ export const profile = {
   name: 'Sameer',
   roles: ['Computer Science Student', 'Full Stack Developer', 'Problem Solver'],
   summary:
-    'Computer Science student focused on Full Stack Development and Data Structures & Algorithms. I enjoy building reliable web applications and solving challenging problems.',
+    'Computer Science student focused on Full Stack Development and Data Structures & Algorithms. I enjoy building practical, reliable applications and solving challenging problems.',
 
   email: 'sameersaini8851@gmail.com',
 
@@ -39,7 +39,7 @@ export const navItems = [
 
 export const aboutParagraphs = [
   "I'm a Computer Science student at Chandigarh University, working toward a B.E. (expected 2028) with a current CGPA of 8.0.",
-  'My work sits between two things I enjoy: building web applications with React and Node.js, and solving algorithmic problems, with 450+ solved on LeetCode in C++ and Java.',
-  'In mid-2026 I completed a Data Science internship at Algoson – GraveAngels, where I cleaned and analysed structured datasets in Python.',
-  "I care about code that other people can read, extend and debug. I'm looking for a Software Engineer role where I can keep building that way.",
+  'My work combines building full-stack applications with React, TypeScript, Java and Spring Boot, along with solving algorithmic problems in C++ and Java, with 450+ problems solved on LeetCode.',
+  'In mid-2026 I completed a Data Science internship at Algoson – GraveAngels, where I worked with structured datasets using Python and developed my analytical and problem-solving skills.',
+  "I care about writing clean, maintainable code and building applications that solve practical problems. I'm looking for opportunities to grow as a Software Engineer while continuing to build reliable products.",
 ];
