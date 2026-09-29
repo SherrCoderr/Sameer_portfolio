@@ -1,48 +1,52 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Mail, Download, Trophy, GraduationCap, Database } from 'lucide-react';
+import { ArrowDown, Github, Mail, Download, Trophy, GraduationCap, Database, Sparkles } from 'lucide-react';
 import Button from '../components/Button.jsx';
 import { profile } from '../data/profile.js';
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
 };
 const item = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
 };
 
-// Tone steps up across the three roles so the eye lands on "Problem Solver".
-const roleTone = ['text-zinc-500', 'text-zinc-300', 'text-white'];
+const roleTone = ['text-zinc-400', 'text-accent', 'text-white'];
 
 export default function Hero() {
   return (
     <section id="top" aria-label="Introduction" className="relative isolate overflow-hidden pt-28 md:pt-36">
-      {/* Background: faint grid + one slow glow. Decorative only. */}
+      {/* Background: faint grid + slow glow */}
       <div aria-hidden="true" className="hero-grid absolute inset-0 -z-10" />
       <div
         aria-hidden="true"
-        className="animate-drift absolute -top-40 left-1/2 -z-10 h-[520px] w-[720px] -translate-x-1/2 rounded-full bg-accent/[0.09] blur-[120px]"
+        className="animate-drift absolute -top-40 left-1/2 -z-10 h-[520px] w-[720px] -translate-x-1/2 rounded-full bg-accent/[0.08] blur-[130px]"
       />
 
       <div className="container-page grid items-end gap-12 pb-20 md:pb-28 lg:grid-cols-[1.75fr_1fr] lg:gap-10">
         <motion.div variants={container} initial="hidden" animate="show">
+          <motion.div variants={item} className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1 text-xs font-medium text-accent">
+            <Sparkles size={13} aria-hidden="true" />
+            <span>Computer Science Student &bull; Full Stack Developer</span>
+          </motion.div>
+
           <motion.h1
             variants={item}
-            className="font-display text-[clamp(4.5rem,15vw,10.5rem)] font-semibold leading-[0.88] tracking-[-0.04em] text-white"
+            className="font-display text-[clamp(4rem,14vw,9.5rem)] font-semibold leading-[0.9] tracking-[-0.04em] text-white"
           >
             {profile.name}
           </motion.h1>
 
-          <motion.p variants={item} className="mt-8 font-display text-2xl font-medium leading-tight tracking-tight sm:text-4xl">
+          <motion.div variants={item} className="mt-7 font-display text-2xl font-medium leading-tight tracking-tight sm:text-3xl lg:text-4xl">
             {profile.roles.map((role, i) => (
               <span key={role} className={`block ${roleTone[i]}`}>
                 {role}
               </span>
             ))}
-          </motion.p>
+          </motion.div>
 
-          <motion.p variants={item} className="mt-6 max-w-xl text-base leading-relaxed text-zinc-400 md:text-lg">
+          <motion.p variants={item} className="mt-6 max-w-xl text-base leading-relaxed text-zinc-300 md:text-lg">
             {profile.summary}
           </motion.p>
 
@@ -67,18 +71,18 @@ export default function Hero() {
           aria-label="Highlights"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="glass rounded-2xl p-6 sm:p-7"
+          transition={{ duration: 0.8, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          className="glass rounded-2xl p-6 sm:p-7 shadow-xl"
         >
           <div className="flex items-center gap-2 text-sm text-zinc-400">
             <Trophy size={16} className="text-accent" aria-hidden="true" />
-            Problem solving
+            <span>Problem Solving</span>
           </div>
           <p className="mt-3 font-display text-6xl font-semibold tracking-tight text-white sm:text-7xl">
             {profile.leetcodeSolved}+
           </p>
-          <p className="mt-1 text-base text-zinc-300">LeetCode problems solved</p>
-          <p className="text-sm text-zinc-500">in {profile.leetcodeLanguages.join(' and ')}</p>
+          <p className="mt-1 text-base text-zinc-200 font-medium">LeetCode problems solved</p>
+          <p className="text-sm text-zinc-400">in {profile.leetcodeLanguages.join(' and ')}</p>
 
           <a
             href={profile.links.leetcode}
@@ -86,16 +90,16 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="mt-4 inline-flex text-sm font-medium text-accent underline-offset-4 hover:underline"
           >
-            View LeetCode profile
+            View LeetCode profile &rarr;
           </a>
 
-          <ul className="mt-6 space-y-3 border-t border-white/10 pt-5 text-sm text-zinc-300">
+          <ul className="mt-6 space-y-3.5 border-t border-white/10 pt-5 text-sm text-zinc-300">
             <li className="flex gap-3">
-              <GraduationCap size={17} className="mt-0.5 shrink-0 text-zinc-500" aria-hidden="true" />
+              <GraduationCap size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
               <span>B.E. Computer Science, Chandigarh University (expected 2028)</span>
             </li>
             <li className="flex gap-3">
-              <Database size={17} className="mt-0.5 shrink-0 text-zinc-500" aria-hidden="true" />
+              <Database size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
               <span>Data Science intern, Algoson – GraveAngels</span>
             </li>
           </ul>

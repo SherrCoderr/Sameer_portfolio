@@ -1,9 +1,12 @@
 // ─────────────────────────────────────────────────────────────
-// Project links. Replace the values below whenever they change.
-// Set a link to null to hide its button.
+// Project links and dataset.
 // ─────────────────────────────────────────────────────────────
 
-// SplitWiseX
+// Job Portal & Resume Analyzer (Flagship)
+const JOB_PORTAL_LIVE_DEMO_URL = 'https://job-portal-resume-analyzer-seven.vercel.app/';
+const JOB_PORTAL_GITHUB_URL = 'https://github.com/SherrCoderr/job-portal-resume-analyzer';
+
+// SplitWiseX (Flagship)
 const SPLITWISEX_LIVE_DEMO_URL = 'https://split-wise-x-navy.vercel.app/';
 const SPLITWISEX_GITHUB_URL = 'https://github.com/SherrCoderr/SplitWiseX';
 
@@ -13,43 +16,95 @@ const TRAFFIC_ANALYZER_GITHUB_URL = 'https://github.com/SherrCoderr/traffic-anal
 
 export const projects = [
   {
-    name: 'SplitWiseX',
-    chrome: 'split-wise-x-navy.vercel.app • full-stack expense platform',
+    id: 'job-portal-resume-analyzer',
+    name: 'Job Portal & Resume Analyzer',
+    featured: true,
+    tagline: 'Flagship Full-Stack Platform',
+    chrome: 'job-portal-resume-analyzer-seven.vercel.app',
     description:
-      'Full-stack group expense splitting platform for managing shared expenses, calculating balances, and simplifying settlements between members.',
-    tech: ['React', 'TypeScript', 'Java', 'Spring Boot', 'PostgreSQL', 'WebSockets'],
+      'Full-stack job platform with role-based authentication, job management, resume analysis, job matching, and application tracking.',
+    tech: [
+      'React',
+      'Spring Boot',
+      'Java',
+      'Spring Security',
+      'JWT',
+      'PostgreSQL',
+      'JPA/Hibernate',
+    ],
     features: [
-      'JWT authentication with BCrypt password hashing',
-      'Group and member management with server-side authorization',
-      'Expense tracking with deterministic equal splitting',
-      'Automatic balance calculation and settlement optimization',
-      'Greedy algorithm to minimize settlement transactions',
-      'Real-time group updates using WebSockets and STOMP',
-      'PostgreSQL persistence with JPA/Hibernate and Flyway migrations',
-      'Dockerized backend with production deployment on Render and Vercel',
+      'Role-based authentication & authorization supporting Job Seeker, Recruiter, and Admin roles',
+      'Secure JWT authentication with BCrypt password hashing and CORS configuration',
+      'Job posting, keyword searching, and streamlined direct job application workflow',
+      'Recruiter applicant management dashboard and end-to-end application status tracking',
+      'Resume upload with automated skill extraction, analysis, and job-resume match percentage',
+      'Admin dashboard for platform moderation and oversight',
+      'PostgreSQL persistence via JPA/Hibernate with Neon cloud database and environment-based config',
+      'Production deployment with React frontend on Vercel and Spring Boot backend on Render',
     ],
     status: {
       label: 'Live',
       tone: 'live',
-      note: 'Deployed on Vercel with Spring Boot backend on Render',
+      note: 'Production on Vercel & Render with Neon PostgreSQL',
+    },
+    github: JOB_PORTAL_GITHUB_URL,
+    liveDemo: JOB_PORTAL_LIVE_DEMO_URL,
+  },
+  {
+    id: 'splitwisex',
+    name: 'SplitWiseX',
+    featured: true,
+    tagline: 'Featured Full-Stack Application',
+    chrome: 'split-wise-x-navy.vercel.app',
+    description:
+      'Full-stack group expense splitting platform for managing shared expenses, calculating balances, and simplifying settlements between members.',
+    tech: [
+      'React',
+      'TypeScript',
+      'Java',
+      'Spring Boot',
+      'PostgreSQL',
+      'WebSockets',
+      'STOMP',
+      'Flyway',
+      'Docker',
+    ],
+    features: [
+      'JWT authentication with BCrypt password hashing and server-side authorization',
+      'Group and member management with deterministic equal expense splitting',
+      'Automatic balance calculation and settlement optimization with greedy algorithm to minimize transactions',
+      'Real-time live group updates using WebSockets and STOMP messaging',
+      'PostgreSQL persistence with JPA/Hibernate and Flyway database migrations',
+      'Dockerized backend with production deployment on Render and React on Vercel',
+    ],
+    status: {
+      label: 'Live',
+      tone: 'live',
+      note: 'Production on Vercel with Spring Boot backend on Render',
     },
     github: SPLITWISEX_GITHUB_URL,
     liveDemo: SPLITWISEX_LIVE_DEMO_URL,
-    linksNote: 'Live demo and source code available.',
   },
   {
+    id: 'web-traffic-analyzer',
     name: 'Web Traffic Analyzer',
+    featured: false,
+    tagline: 'Web Analytics Tool',
     chrome: 'traffic-analyzer-vert.vercel.app',
     description:
       'Web traffic analyzer that monitors and visualizes website traffic patterns.',
     tech: ['HTML', 'CSS', 'JavaScript', 'Node.js'],
     features: [
-      'Built backend logic using Node.js',
-      'Processes and serves traffic data',
-      'Responsive analytics interface',
+      'Built backend logic using Node.js for data ingestion and processing',
+      'Processes and serves structured traffic data metrics',
+      'Responsive analytics interface for pattern visualization',
       'Deployed publicly on Vercel',
     ],
-    status: { label: 'Live', tone: 'live', note: 'Deployed on Vercel' },
+    status: {
+      label: 'Live',
+      tone: 'live',
+      note: 'Deployed publicly on Vercel',
+    },
     github: TRAFFIC_ANALYZER_GITHUB_URL,
     liveDemo: TRAFFIC_ANALYZER_LIVE_DEMO_URL,
   },

@@ -11,7 +11,6 @@ export const profile = {
   email: 'sameersaini8851@gmail.com',
 
   // Set showPhone to true if you want your number visible on the Contact section.
-  // (Public phone numbers tend to attract spam, so it is hidden by default.)
   phone: '7973279803',
   showPhone: false,
 
@@ -22,7 +21,7 @@ export const profile = {
     github: 'https://github.com/SherrCoderr',
     linkedin: 'https://www.linkedin.com/in/sameer-saini-a0a248353/',
     leetcode: 'https://leetcode.com/u/SherrCoderr/',
-    // File lives in /public. Replace it with a newer PDF using the same name.
+    // File lives in /public.
     resume: `${import.meta.env.BASE_URL}Sameer_Resume.pdf`,
   },
 };
@@ -39,7 +38,7 @@ export const navItems = [
 
 export const aboutParagraphs = [
   "I'm a Computer Science student at Chandigarh University, working toward a B.E. (expected 2028) with a current CGPA of 8.0.",
-  'My work combines building full-stack applications with React, TypeScript, Java and Spring Boot, along with solving algorithmic problems in C++ and Java, with 450+ problems solved on LeetCode.',
-  'In mid-2026 I completed a Data Science internship at Algoson – GraveAngels, where I worked with structured datasets using Python and developed my analytical and problem-solving skills.',
-  "I care about writing clean, maintainable code and building applications that solve practical problems. I'm looking for opportunities to grow as a Software Engineer while continuing to build reliable products.",
+  'My core focus is building robust full-stack applications with React, Java, Spring Boot, and PostgreSQL, alongside solving algorithmic challenges in C++ and Java, with 450+ problems solved on LeetCode.',
+  'In mid-2026, I completed a Data Science internship at Algoson – GraveAngels, where I worked with structured datasets using Python and strengthened my analytical problem-solving skills.',
+  "I care deeply about writing clean, maintainable, production-ready code and building applications that solve practical problems. I'm looking for opportunities to grow as a Software Engineer and contribute to meaningful engineering teams.",
 ];

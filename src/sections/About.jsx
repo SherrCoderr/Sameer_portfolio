@@ -1,20 +1,36 @@
-import { Layers, Binary, Boxes, Puzzle } from 'lucide-react';
+import { Layers, Binary, Server, Code2 } from 'lucide-react';
 import Section from '../components/Section.jsx';
 import Reveal from '../components/Reveal.jsx';
 import { aboutParagraphs } from '../data/profile.js';
 
 const interests = [
-  { icon: Layers, title: 'Full Stack Development', text: 'Responsive React interfaces backed by Node.js.' },
-  { icon: Binary, title: 'Data Structures & Algorithms', text: 'Regular practice in C++ and Java.' },
-  { icon: Boxes, title: 'Software Engineering', text: 'Modular, maintainable, easy-to-debug code.' },
-  { icon: Puzzle, title: 'Problem Solving', text: 'Breaking hard problems into clear steps.' },
+  {
+    icon: Layers,
+    title: 'Full Stack Engineering',
+    text: 'Building end-to-end web applications with React, Spring Boot, Java, and PostgreSQL.',
+  },
+  {
+    icon: Binary,
+    title: 'Data Structures & Algorithms',
+    text: 'Consistent practice in C++ and Java with 450+ solved challenges on LeetCode.',
+  },
+  {
+    icon: Server,
+    title: 'Backend & System Architecture',
+    text: 'Designing RESTful APIs, WebSockets/STOMP messaging, authentication, and relational schemas.',
+  },
+  {
+    icon: Code2,
+    title: 'Clean Code & Engineering',
+    text: 'Writing modular, maintainable, production-ready code with strong attention to detail.',
+  },
 ];
 
 export default function About() {
   return (
-    <Section id="about" title="About">
-      <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-        <div className="space-y-5 text-base leading-relaxed text-zinc-400 md:text-lg">
+    <Section id="about" title="About Me" intro="Background, technical interests, and problem-solving focus.">
+      <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-14">
+        <div className="space-y-5 text-base leading-relaxed text-zinc-300 md:text-lg">
           {aboutParagraphs.map((p, i) => (
             <Reveal key={i} delay={i * 0.06} as="p">
               {p}
@@ -22,13 +38,15 @@ export default function About() {
           ))}
         </div>
 
-        <ul className="grid gap-3 sm:grid-cols-2">
+        <ul className="grid gap-4 sm:grid-cols-2">
           {interests.map(({ icon: Icon, title, text }, i) => (
             <Reveal key={title} as="li" delay={i * 0.07}>
-              <div className="h-full rounded-2xl border border-white/10 bg-surface p-5 transition-colors hover:border-white/25">
-                <Icon size={22} className="text-accent" aria-hidden="true" />
+              <div className="h-full rounded-2xl border border-white/10 bg-surface/90 p-5 transition-colors hover:border-accent/40">
+                <span className="grid h-10 w-10 place-items-center rounded-xl border border-accent/20 bg-accent/10 text-accent">
+                  <Icon size={20} aria-hidden="true" />
+                </span>
                 <h3 className="mt-4 font-display text-lg font-semibold text-white">{title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-zinc-400">{text}</p>
+                <p className="mt-2 text-xs leading-relaxed text-zinc-400 sm:text-sm">{text}</p>
               </div>
             </Reveal>
           ))}
