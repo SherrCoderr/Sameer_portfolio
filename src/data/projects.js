@@ -4,7 +4,7 @@
 // ─────────────────────────────────────────────────────────────
 
 // SplitWiseX
-const SPLITWISEX_LIVE_DEMO_URL = null;
+const SPLITWISEX_LIVE_DEMO_URL = 'https://split-wise-x-navy.vercel.app/';
 const SPLITWISEX_GITHUB_URL = 'https://github.com/SherrCoderr/SplitWiseX';
 
 // Web Traffic Analyzer
@@ -14,7 +14,7 @@ const TRAFFIC_ANALYZER_GITHUB_URL = 'https://github.com/SherrCoderr/traffic-anal
 export const projects = [
   {
     name: 'SplitWiseX',
-    chrome: 'splitwisex • full-stack expense platform',
+    chrome: 'split-wise-x-navy.vercel.app • full-stack expense platform',
     description:
       'Full-stack group expense splitting platform for managing shared expenses, calculating balances, and simplifying settlements between members.',
     tech: ['React', 'TypeScript', 'Java', 'Spring Boot', 'PostgreSQL', 'WebSockets'],
@@ -26,15 +26,16 @@ export const projects = [
       'Greedy algorithm to minimize settlement transactions',
       'Real-time group updates using WebSockets and STOMP',
       'PostgreSQL persistence with JPA/Hibernate and Flyway migrations',
+      'Dockerized backend with production deployment on Render and Vercel',
     ],
     status: {
-      label: 'Completed',
+      label: 'Live',
       tone: 'live',
-      note: 'Fully functional and locally verified',
+      note: 'Deployed on Vercel with Spring Boot backend on Render',
     },
     github: SPLITWISEX_GITHUB_URL,
     liveDemo: SPLITWISEX_LIVE_DEMO_URL,
-    linksNote: 'Source code available on GitHub.',
+    linksNote: 'Live demo and source code available.',
   },
   {
     name: 'Web Traffic Analyzer',
