@@ -2,11 +2,15 @@
 // Project links and dataset.
 // ─────────────────────────────────────────────────────────────
 
-// Job Portal & Resume Analyzer (Flagship)
+// Smart Inventory Management System (Featured / Flagship)
+const SMART_INVENTORY_LIVE_DEMO_URL = 'https://smart-inventory-management-system-flame.vercel.app/';
+const SMART_INVENTORY_GITHUB_URL = 'https://github.com/SherrCoderr/smart-inventory-management-system';
+
+// Job Portal & Resume Analyzer (Featured / Flagship)
 const JOB_PORTAL_LIVE_DEMO_URL = 'https://job-portal-resume-analyzer-seven.vercel.app/';
 const JOB_PORTAL_GITHUB_URL = 'https://github.com/SherrCoderr/job-portal-resume-analyzer';
 
-// SplitWiseX (Flagship)
+// SplitWiseX (Featured / Flagship)
 const SPLITWISEX_LIVE_DEMO_URL = 'https://split-wise-x-navy.vercel.app/';
 const SPLITWISEX_GITHUB_URL = 'https://github.com/SherrCoderr/SplitWiseX';
 
@@ -15,6 +19,38 @@ const TRAFFIC_ANALYZER_LIVE_DEMO_URL = 'https://traffic-analyzer-vert.vercel.app
 const TRAFFIC_ANALYZER_GITHUB_URL = 'https://github.com/SherrCoderr/traffic-analyzer';
 
 export const projects = [
+  {
+    id: 'smart-inventory-management-system',
+    name: 'Smart Inventory Management System',
+    featured: true,
+    tagline: 'Enterprise Full-Stack Platform',
+    chrome: 'smart-inventory-management-system-flame.vercel.app',
+    description:
+      'Built and deployed a full-stack inventory management platform with role-based access for administrators and employees. The system supports product, supplier, category, stock IN/OUT, transaction history, low-stock detection, and reorder workflows.',
+    tech: [
+      'React',
+      'Spring Boot',
+      'PostgreSQL',
+      'Redis',
+      'Docker',
+    ],
+    features: [
+      'Admin/Employee role-based access control with JWT authentication and Spring Security',
+      'Concurrency-safe inventory operations with PostgreSQL and JPA/Hibernate',
+      'Redis caching layer with automated cache invalidation strategies',
+      'Low-stock detection engine with automated reorder recommendations',
+      'Immutable inventory transaction and audit history tracking for stock IN/OUT',
+      'Containerized with Docker and verified with 57 automated backend tests',
+      'Production deployment with React on Vercel, Spring Boot on Render, and Neon PostgreSQL',
+    ],
+    status: {
+      label: 'Live',
+      tone: 'live',
+      note: 'Production on Vercel & Render with Redis & Neon PostgreSQL',
+    },
+    github: SMART_INVENTORY_GITHUB_URL,
+    liveDemo: SMART_INVENTORY_LIVE_DEMO_URL,
+  },
   {
     id: 'job-portal-resume-analyzer',
     name: 'Job Portal & Resume Analyzer',

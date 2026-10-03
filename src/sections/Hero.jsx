@@ -26,9 +26,22 @@ export default function Hero() {
 
       <div className="container-page grid items-end gap-12 pb-20 md:pb-28 lg:grid-cols-[1.75fr_1fr] lg:gap-10">
         <motion.div variants={container} initial="hidden" animate="show">
-          <motion.div variants={item} className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1 text-xs font-medium text-accent">
-            <Sparkles size={13} aria-hidden="true" />
-            <span>Computer Science Student &bull; Full Stack Developer</span>
+          <motion.div variants={item} className="mb-6 flex items-center gap-4">
+            <div className="relative shrink-0 group">
+              <div className="absolute -inset-0.5 rounded-full bg-gradient-to-tr from-accent to-accent-deep opacity-50 blur-xs transition duration-300 group-hover:opacity-80" />
+              <img
+                src={profile.links.avatar}
+                alt={profile.name}
+                className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-full object-cover object-[center_20%] border-2 border-white/20 bg-surface shadow-2xl"
+              />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1 text-xs font-medium text-accent self-start">
+                <Sparkles size={13} aria-hidden="true" />
+                <span>Computer Science Student &bull; Full Stack Developer</span>
+              </div>
+              <p className="text-xs text-zinc-400 font-medium pl-1">Chandigarh University &bull; Expected 2028</p>
+            </div>
           </motion.div>
 
           <motion.h1

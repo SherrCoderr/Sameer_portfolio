@@ -17,7 +17,7 @@ export const skillCategories = [
     title: 'Database',
     icon: Database,
     span: 'lg:col-span-2',
-    items: ['PostgreSQL', 'MySQL', 'SQL', 'JPA/Hibernate'],
+    items: ['PostgreSQL', 'MySQL', 'Redis', 'SQL', 'JPA/Hibernate'],
   },
   {
     title: 'Backend',

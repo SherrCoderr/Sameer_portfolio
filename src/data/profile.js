@@ -21,8 +21,9 @@ export const profile = {
     github: 'https://github.com/SherrCoderr',
     linkedin: 'https://www.linkedin.com/in/sameer-saini-a0a248353/',
     leetcode: 'https://leetcode.com/u/SherrCoderr/',
-    // File lives in /public.
+    // Files live in /public.
     resume: `${import.meta.env.BASE_URL}Sameer_Resume.pdf`,
+    avatar: `${import.meta.env.BASE_URL}profile.jpg`,
   },
 };
 

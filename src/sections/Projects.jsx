@@ -26,9 +26,7 @@ function StatusBadge({ status }) {
   );
 }
 
-function ProjectCard({ project, priority = false }) {
-  const hasLinks = project.github || project.liveDemo;
-
+function ProjectCard({ project, isTopHero = false }) {
   return (
     <SpotlightCard as="article" className="flex h-full flex-col border-white/10 bg-surface/90 hover:border-accent/40">
       {/* Browser chrome header bar */}
@@ -55,30 +53,59 @@ function ProjectCard({ project, priority = false }) {
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col p-6 sm:p-8">
-        <div>
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <h3 className="font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-              {project.name}
-            </h3>
-          </div>
-          {project.tagline && (
-            <p className="mt-1 text-xs font-medium uppercase tracking-wider text-accent-soft">
-              {project.tagline}
+      <div className={`flex flex-1 flex-col p-6 sm:p-8 ${isTopHero ? 'lg:p-9' : ''}`}>
+        <div className={isTopHero ? 'lg:flex lg:items-start lg:justify-between lg:gap-8' : ''}>
+          <div className={isTopHero ? 'lg:max-w-2xl' : ''}>
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 className={`font-display font-semibold tracking-tight text-white ${isTopHero ? 'text-2xl sm:text-3xl lg:text-4xl' : 'text-2xl sm:text-3xl'}`}>
+                {project.name}
+              </h3>
+            </div>
+            {project.tagline && (
+              <p className="mt-1 text-xs font-medium uppercase tracking-wider text-accent-soft">
+                {project.tagline}
+              </p>
+            )}
+
+            <p className="mt-4 text-sm leading-relaxed text-zinc-300 sm:text-base">
+              {project.description}
             </p>
+          </div>
+
+          {isTopHero && (
+            <div className="hidden lg:flex shrink-0 items-center gap-3 pt-2">
+              {project.liveDemo && (
+                <Button
+                  href={project.liveDemo}
+                  external
+                  variant="primary"
+                  icon={ExternalLink}
+                  size="md"
+                >
+                  Live Demo
+                </Button>
+              )}
+              {project.github && (
+                <Button
+                  href={project.github}
+                  external
+                  variant="secondary"
+                  icon={Github}
+                  size="md"
+                >
+                  GitHub
+                </Button>
+              )}
+            </div>
           )}
         </div>
-
-        <p className="mt-4 text-sm leading-relaxed text-zinc-300 sm:text-base">
-          {project.description}
-        </p>
 
         {/* Feature list */}
         <div className="mt-6 flex-1">
           <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
             Key Architecture & Features
           </p>
-          <ul className="mt-3 space-y-2.5">
+          <ul className={`mt-3 space-y-2.5 ${isTopHero ? 'grid gap-2.5 sm:grid-cols-2 space-y-0' : ''}`}>
             {project.features.map((feature) => (
               <li key={feature} className="flex items-start gap-2.5 text-xs leading-relaxed text-zinc-300 sm:text-sm">
                 <Check size={15} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
@@ -103,7 +130,7 @@ function ProjectCard({ project, priority = false }) {
         </div>
 
         {/* Action Buttons */}
-        <div className="mt-6 flex flex-wrap items-center gap-3 pt-2">
+        <div className={`mt-6 flex flex-wrap items-center gap-3 pt-2 ${isTopHero ? 'lg:hidden' : ''}`}>
           {project.liveDemo && (
             <Button
               href={project.liveDemo}
@@ -152,11 +179,19 @@ export default function Projects() {
             </h3>
           </div>
           <ul className="grid gap-8 lg:grid-cols-2">
-            {flagshipProjects.map((project, i) => (
-              <Reveal key={project.id || project.name} as="li" delay={i * 0.1}>
-                <ProjectCard project={project} priority={i === 0} />
-              </Reveal>
-            ))}
+            {flagshipProjects.map((project, i) => {
+              const isTopHero = i === 0 && flagshipProjects.length % 2 === 1;
+              return (
+                <Reveal
+                  key={project.id || project.name}
+                  as="li"
+                  delay={i * 0.1}
+                  className={isTopHero ? 'lg:col-span-2' : ''}
+                >
+                  <ProjectCard project={project} isTopHero={isTopHero} />
+                </Reveal>
+              );
+            })}
           </ul>
         </div>
 
