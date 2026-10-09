@@ -8,23 +8,23 @@ export default function Education() {
       <ul className="grid gap-5 md:grid-cols-2">
         {education.map(({ title, school, place, period, score, icon: Icon }, i) => (
           <Reveal key={title} as="li" delay={i * 0.1}>
-            <article className="flex h-full flex-col rounded-2xl border border-white/10 bg-surface p-6 transition-colors hover:border-white/25 sm:p-8">
+            <article className="flex h-full flex-col rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-xs hover:border-blue-300 hover:shadow-card-hover transition-all duration-300">
               <div className="flex items-start justify-between gap-4">
-                <span className="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/[0.04] text-accent">
+                <span className="grid h-11 w-11 place-items-center rounded-xl border border-blue-200 bg-blue-50 text-accent">
                   <Icon size={22} aria-hidden="true" />
                 </span>
-                <p className="rounded-full border border-white/10 px-3 py-1 text-sm text-zinc-300">{period}</p>
+                <p className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-600">{period}</p>
               </div>
 
-              <h3 className="mt-6 font-display text-2xl font-semibold leading-snug tracking-tight text-white">
+              <h3 className="mt-6 font-display text-2xl font-bold leading-snug tracking-tight text-slate-900">
                 {title}
               </h3>
-              <p className="mt-2 text-zinc-300">{school}</p>
-              {place && <p className="text-sm text-zinc-500">{place}</p>}
+              <p className="mt-2 font-semibold text-slate-700">{school}</p>
+              {place && <p className="text-sm text-slate-500">{place}</p>}
 
-              <p className="mt-auto pt-8 text-zinc-400">
+              <p className="mt-auto pt-8 text-sm font-medium text-slate-500 border-t border-slate-100">
                 {score.label}:{' '}
-                <span className="font-display text-2xl font-semibold text-white">{score.value}</span>
+                <span className="font-display text-2xl font-bold text-slate-900">{score.value}</span>
               </p>
             </article>
           </Reveal>

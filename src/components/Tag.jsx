@@ -1,7 +1,7 @@
 export default function Tag({ children, className = '' }) {
   return (
     <span
-      className={`inline-flex items-center rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs font-medium text-zinc-300 transition-colors hover:border-accent/40 hover:bg-white/[0.07] hover:text-white ${className}`}
+      className={`inline-flex items-center rounded-lg border border-slate-200/90 bg-slate-100/70 px-2.5 py-1 text-xs font-medium text-slate-700 transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700 ${className}`}
     >
       {children}
     </span>

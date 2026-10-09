@@ -15,16 +15,16 @@ function StatusBadge({ status }) {
   const isLive = status.tone === 'live';
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium ${
+      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold ${
         isLive
-          ? 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300'
-          : 'border-amber-300/30 bg-amber-300/10 text-amber-200'
+          ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
+          : 'border-amber-200 bg-amber-50 text-amber-700'
       }`}
     >
       <Circle
         size={7}
         aria-hidden="true"
-        className={`fill-current ${isLive ? 'text-emerald-400 animate-pulse' : 'text-amber-300'}`}
+        className={`fill-current ${isLive ? 'text-emerald-500 animate-pulse' : 'text-amber-500'}`}
       />
       {status.label}
     </span>
@@ -33,23 +33,23 @@ function StatusBadge({ status }) {
 
 function ProjectCard({ project, isTopHero = false, onOpenModal }) {
   return (
-    <SpotlightCard as="article" className="flex h-full flex-col border-white/10 bg-surface/90 hover:border-accent/40 group">
+    <SpotlightCard as="article" className="flex h-full flex-col border-slate-200/90 bg-white hover:border-blue-300 group shadow-xs">
       {/* Browser chrome header bar */}
-      <div className="flex items-center justify-between gap-3 border-b border-white/10 bg-white/[0.02] px-5 py-3.5">
+      <div className="flex items-center justify-between gap-3 border-b border-slate-100 bg-slate-50/90 px-5 py-3">
         <div className="flex items-center gap-2">
           <div className="flex gap-1.5" aria-hidden="true">
-            <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-            <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-            <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
+            <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+            <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+            <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
           </div>
-          <span className="ml-2 hidden max-w-[200px] truncate rounded-md bg-black/40 px-2.5 py-0.5 text-xs text-zinc-400 sm:inline-block sm:max-w-xs font-mono">
+          <span className="ml-2 hidden max-w-[200px] truncate rounded-md border border-slate-200/80 bg-white px-2.5 py-0.5 text-xs text-slate-600 sm:inline-block sm:max-w-xs font-mono">
             {project.chrome}
           </span>
         </div>
 
         <div className="flex items-center gap-2">
           {project.featured && (
-            <span className="inline-flex items-center gap-1 rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
+            <span className="inline-flex items-center gap-1 rounded-full border border-blue-200 bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-accent">
               <Sparkles size={12} aria-hidden="true" />
               Featured
             </span>
@@ -62,17 +62,17 @@ function ProjectCard({ project, isTopHero = false, onOpenModal }) {
         <div className={isTopHero ? 'lg:flex lg:items-start lg:justify-between lg:gap-8' : ''}>
           <div className={isTopHero ? 'lg:max-w-2xl' : ''}>
             <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 className={`font-display font-semibold tracking-tight text-white ${isTopHero ? 'text-2xl sm:text-3xl lg:text-4xl' : 'text-2xl sm:text-3xl'}`}>
+              <h3 className={`font-display font-bold tracking-tight text-slate-900 ${isTopHero ? 'text-2xl sm:text-3xl lg:text-4xl' : 'text-2xl sm:text-3xl'}`}>
                 {project.name}
               </h3>
             </div>
             {project.tagline && (
-              <p className="mt-1 text-xs font-medium uppercase tracking-wider text-accent-soft">
+              <p className="mt-1 text-xs font-bold uppercase tracking-wider text-accent">
                 {project.tagline}
               </p>
             )}
 
-            <p className="mt-4 text-sm leading-relaxed text-zinc-300 sm:text-base">
+            <p className="mt-3.5 text-sm leading-relaxed text-slate-600 sm:text-base">
               {project.description}
             </p>
           </div>
@@ -115,13 +115,13 @@ function ProjectCard({ project, isTopHero = false, onOpenModal }) {
 
         {/* Feature list */}
         <div className="mt-6 flex-1">
-          <p className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+          <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
             Key Architecture & Features
           </p>
           <ul className={`mt-3 space-y-2.5 ${isTopHero ? 'grid gap-2.5 sm:grid-cols-2 space-y-0' : ''}`}>
             {project.features.map((feature) => (
-              <li key={feature} className="flex items-start gap-2.5 text-xs leading-relaxed text-zinc-300 sm:text-sm">
-                <Check size={15} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
+              <li key={feature} className="flex items-start gap-2.5 text-xs leading-relaxed text-slate-700 sm:text-sm">
+                <Check size={16} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
                 <span>{feature}</span>
               </li>
             ))}
@@ -129,8 +129,8 @@ function ProjectCard({ project, isTopHero = false, onOpenModal }) {
         </div>
 
         {/* Tech badges */}
-        <div className="mt-8 border-t border-white/10 pt-5">
-          <p className="mb-2.5 text-xs font-semibold uppercase tracking-wider text-zinc-400">
+        <div className="mt-8 border-t border-slate-100 pt-5">
+          <p className="mb-2.5 text-xs font-bold uppercase tracking-wider text-slate-500">
             Technologies Used
           </p>
           <ul className="flex flex-wrap gap-2" aria-label={`${project.name} technologies`}>
@@ -168,10 +168,10 @@ function ProjectCard({ project, isTopHero = false, onOpenModal }) {
           )}
           <Button
             onClick={() => onOpenModal(project)}
-            variant="quiet"
+            variant="secondary"
             icon={Info}
             size="sm"
-            className="border border-white/10 px-3 py-2 text-xs"
+            className="text-xs"
           >
             Details
           </Button>
@@ -209,10 +209,10 @@ export default function Projects() {
             key={cat}
             type="button"
             onClick={() => setActiveFilter(cat)}
-            className={`rounded-full px-4 py-2 text-xs font-medium transition-all duration-200 ${
+            className={`rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 ${
               activeFilter === cat
-                ? 'bg-accent text-ink font-semibold shadow-lg shadow-accent/20'
-                : 'border border-white/10 bg-white/[0.03] text-zinc-400 hover:border-white/20 hover:text-white'
+                ? 'bg-accent text-white shadow-sm shadow-blue-500/20'
+                : 'border border-slate-200/90 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 shadow-xs'
             }`}
           >
             {cat}
@@ -226,7 +226,7 @@ export default function Projects() {
           <div>
             <div className="mb-6 flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-accent" />
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-300">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700">
                 Core Production Platforms
               </h3>
             </div>
@@ -254,10 +254,10 @@ export default function Projects() {
 
         {/* Other projects */}
         {otherProjects.length > 0 && (
-          <div className="border-t border-white/10 pt-10">
+          <div className="border-t border-slate-200 pt-10">
             <div className="mb-6 flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-zinc-500" />
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+              <span className="h-2 w-2 rounded-full bg-slate-400" />
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-600">
                 Additional Tools & Systems
               </h3>
             </div>

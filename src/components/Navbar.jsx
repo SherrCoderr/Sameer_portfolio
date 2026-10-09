@@ -30,19 +30,21 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open ? 'border-b border-white/10 bg-ink/80 backdrop-blur-xl' : 'border-b border-transparent'
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled || open
+          ? 'border-b border-slate-200/90 bg-white/90 backdrop-blur-md shadow-xs'
+          : 'border-b border-transparent bg-transparent'
       }`}
     >
       <nav aria-label="Primary" className="container-page flex h-16 items-center justify-between">
         <a
           href="#top"
-          className="flex items-center gap-2.5 font-display text-lg font-semibold tracking-tight text-white"
+          className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight text-slate-900"
           onClick={() => setOpen(false)}
         >
           <span
             aria-hidden="true"
-            className="grid h-7 w-7 place-items-center rounded-lg border border-accent/40 bg-accent/10 text-sm text-accent"
+            className="grid h-7 w-7 place-items-center rounded-lg border border-blue-200 bg-blue-50 text-sm font-bold text-accent"
           >
             S
           </span>
@@ -55,8 +57,10 @@ export default function Navbar() {
               <a
                 href={`#${item.id}`}
                 aria-current={isActive(item) ? 'true' : undefined}
-                className={`rounded-full px-3.5 py-2 text-sm transition-colors ${
-                  isActive(item) ? 'bg-white/[0.08] text-white' : 'text-zinc-400 hover:text-white'
+                className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
+                  isActive(item)
+                    ? 'bg-slate-100 text-accent font-semibold shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/60'
                 }`}
               >
                 {item.label}
@@ -66,17 +70,19 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <a
-            href={profile.links.resume}
-            download
-            className="hidden items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-accent-soft sm:inline-flex"
-          >
-            <Download size={15} aria-hidden="true" />
-            Resume
-          </a>
+          {profile.links.resume && (
+            <a
+              href={profile.links.resume}
+              download
+              className="hidden items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-white transition-all duration-200 hover:bg-accent-hover shadow-sm shadow-blue-500/20 sm:inline-flex"
+            >
+              <Download size={15} aria-hidden="true" />
+              Resume
+            </a>
+          )}
           <button
             type="button"
-            className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-zinc-100 transition-colors hover:bg-white/10 lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-50 lg:hidden shadow-xs"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -95,7 +101,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden lg:hidden"
+            className="overflow-hidden border-b border-slate-200 bg-white/95 backdrop-blur-xl lg:hidden shadow-md"
           >
             <ul className="container-page flex flex-col gap-1 pb-6 pt-2">
               {navItems.map((item) => (
@@ -103,24 +109,28 @@ export default function Navbar() {
                   <a
                     href={`#${item.id}`}
                     onClick={() => setOpen(false)}
-                    className={`block rounded-xl px-4 py-3 text-lg font-medium transition-colors ${
-                      isActive(item) ? 'bg-white/[0.07] text-white' : 'text-zinc-300 hover:bg-white/5'
+                    className={`block rounded-xl px-4 py-3 text-base font-medium transition-colors ${
+                      isActive(item)
+                        ? 'bg-blue-50 text-accent font-semibold'
+                        : 'text-slate-700 hover:bg-slate-50'
                     }`}
                   >
                     {item.label}
                   </a>
                 </li>
               ))}
-              <li className="pt-3">
-                <a
-                  href={profile.links.resume}
-                  download
-                  className="flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-medium text-ink"
-                >
-                  <Download size={16} aria-hidden="true" />
-                  Download resume
-                </a>
-              </li>
+              {profile.links.resume && (
+                <li className="pt-3">
+                  <a
+                    href={profile.links.resume}
+                    download
+                    className="flex items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-medium text-white shadow-sm shadow-blue-500/20"
+                  >
+                    <Download size={16} aria-hidden="true" />
+                    Download Resume
+                  </a>
+                </li>
+              )}
             </ul>
           </motion.div>
         )}

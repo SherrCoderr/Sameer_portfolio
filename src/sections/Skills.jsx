@@ -29,10 +29,10 @@ export default function Skills() {
             key={tab}
             type="button"
             onClick={() => setSelectedTab(tab)}
-            className={`rounded-full px-4 py-2 text-xs font-medium transition-all duration-200 ${
+            className={`rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 ${
               selectedTab === tab
-                ? 'bg-accent text-ink font-semibold shadow-lg shadow-accent/20'
-                : 'border border-white/10 bg-white/[0.03] text-zinc-400 hover:border-white/20 hover:text-white'
+                ? 'bg-accent text-white shadow-sm shadow-blue-500/20'
+                : 'border border-slate-200/90 bg-white text-slate-600 hover:bg-slate-50 hover:text-slate-900 shadow-xs'
             }`}
           >
             {tab}
@@ -49,21 +49,21 @@ export default function Skills() {
           transition={{ duration: 0.25 }}
           className="grid gap-5 md:grid-cols-2 lg:grid-cols-6"
         >
-          {visibleCategories.map(({ title, icon: Icon, span, items }, i) => (
+          {visibleCategories.map(({ title, icon: Icon, span, items }) => (
             <li
               key={title}
               className={`${selectedTab === 'All Categories' ? span : 'lg:col-span-3'} flex flex-col`}
             >
-              <SpotlightCard className="flex h-full flex-col p-6 sm:p-7 border-white/10 bg-surface/90 hover:border-accent/40" lift={-3}>
+              <SpotlightCard className="flex h-full flex-col p-6 sm:p-7 border-slate-200/90 bg-white hover:border-blue-300" lift={-3}>
                 <div className="flex items-center gap-3">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-accent/20 bg-accent/10 text-accent">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-blue-200 bg-blue-50 text-accent">
                     <Icon size={20} aria-hidden="true" />
                   </span>
                   <div>
-                    <h3 className="font-display text-lg font-semibold tracking-tight text-white sm:text-xl">
+                    <h3 className="font-display text-lg font-bold tracking-tight text-slate-900 sm:text-xl">
                       {title}
                     </h3>
-                    <p className="text-[11px] text-zinc-500 font-mono">
+                    <p className="text-[11px] text-slate-500 font-mono">
                       {items.length} Technologies
                     </p>
                   </div>
@@ -75,9 +75,9 @@ export default function Skills() {
                       key={skill}
                       whileHover={{ y: -2 }}
                       transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.04] px-3.5 py-2 text-xs font-medium text-zinc-200 transition-colors hover:border-accent/50 hover:bg-white/[0.08] hover:text-white sm:text-sm"
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200/80 bg-slate-50/80 px-3 py-1.5 text-xs font-medium text-slate-700 transition-colors hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700 sm:text-sm"
                     >
-                      <CheckCircle2 size={13} className="text-accent/70 shrink-0" />
+                      <CheckCircle2 size={13} className="text-accent shrink-0" />
                       <span>{skill}</span>
                     </motion.li>
                   ))}
@@ -89,15 +89,15 @@ export default function Skills() {
       </AnimatePresence>
 
       {/* Core Competencies & Soft Skills */}
-      <Reveal className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2.5 rounded-2xl border border-white/10 bg-surface/60 p-5 sm:px-6 text-sm text-zinc-400">
-        <div className="flex items-center gap-2 font-medium text-zinc-200 mr-2">
+      <Reveal className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2.5 rounded-2xl border border-slate-200/90 bg-white p-5 sm:px-6 text-sm text-slate-600 shadow-xs">
+        <div className="flex items-center gap-2 font-semibold text-slate-900 mr-2">
           <Sparkles size={16} className="text-accent shrink-0" />
           <span>Engineering Fundamentals:</span>
         </div>
         {softSkills.map((s) => (
           <span
             key={s}
-            className="rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1 text-xs text-zinc-300 font-medium hover:border-white/20 transition-colors"
+            className="rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1 text-xs text-slate-700 font-medium hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700 transition-colors"
           >
             {s}
           </span>

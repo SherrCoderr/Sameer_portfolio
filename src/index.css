@@ -5,8 +5,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #08090b;
-    color-scheme: dark;
+    background-color: #F8FAFC;
+    color-scheme: light;
   }
   @media (prefers-reduced-motion: reduce) {
     html {
@@ -14,18 +14,18 @@
     }
   }
   body {
-    @apply bg-ink font-sans text-zinc-300 antialiased;
+    @apply bg-slate-50 font-sans text-slate-600 antialiased;
     overflow-x: clip;
   }
   section[id] {
     scroll-margin-top: 4.5rem;
   }
   ::selection {
-    background: rgb(147 164 255 / 0.35);
-    color: #fff;
+    background: rgb(37 99 235 / 0.15);
+    color: #0F172A;
   }
   :focus-visible {
-    outline: 2px solid #93a4ff;
+    outline: 2px solid #2563EB;
     outline-offset: 3px;
     border-radius: 6px;
   }
@@ -36,15 +36,15 @@
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
   .glass {
-    @apply border border-white/10 bg-white/[0.035] backdrop-blur-md;
+    @apply border border-slate-200/80 bg-white/80 backdrop-blur-md shadow-sm;
   }
   .hero-grid {
     background-image:
-      linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 30%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 30%, transparent 75%);
+      linear-gradient(to right, rgb(15 23 42 / 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(15 23 42 / 0.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 75%);
   }
 }
 
