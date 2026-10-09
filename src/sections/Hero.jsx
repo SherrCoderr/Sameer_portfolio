@@ -1,23 +1,40 @@
-import { motion } from 'framer-motion';
-import { ArrowDown, Github, Mail, Download, Trophy, GraduationCap, Database, Sparkles } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { ArrowDown, Github, Mail, Download, Trophy, GraduationCap, Database, Sparkles, Code2, Terminal } from 'lucide-react';
 import Button from '../components/Button.jsx';
 import { profile } from '../data/profile.js';
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
 };
 const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
 
-const roleTone = ['text-zinc-400', 'text-accent', 'text-white'];
+const specialties = [
+  'Full-Stack Web Engineering',
+  'Spring Boot & Java Backend',
+  'PostgreSQL, Redis & Concurrency',
+  'DSA & Algorithmic Problem Solving',
+];
 
 export default function Hero() {
+  const [index, setIndex] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % specialties.length);
+    }, 3200);
+    return () => clearInterval(interval);
+  }, [shouldReduceMotion]);
+
   return (
     <section id="top" aria-label="Introduction" className="relative isolate overflow-hidden pt-28 md:pt-36">
-      {/* Background: faint grid + slow glow */}
+      {/* Background: faint grid + subtle atmospheric glow */}
       <div aria-hidden="true" className="hero-grid absolute inset-0 -z-10" />
       <div
         aria-hidden="true"
@@ -26,56 +43,79 @@ export default function Hero() {
 
       <div className="container-page grid items-end gap-12 pb-20 md:pb-28 lg:grid-cols-[1.75fr_1fr] lg:gap-10">
         <motion.div variants={container} initial="hidden" animate="show">
-          <motion.div variants={item} className="mb-6 flex items-center gap-4">
+          {/* Profile Photo & Availability Badge */}
+          <motion.div variants={item} className="mb-6 flex items-center gap-4 sm:gap-5">
             <div className="relative shrink-0 group">
-              <div className="absolute -inset-0.5 rounded-full bg-gradient-to-tr from-accent to-accent-deep opacity-50 blur-xs transition duration-300 group-hover:opacity-80" />
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-accent via-accent-soft to-accent-deep opacity-40 blur-xs transition duration-300 group-hover:opacity-75" />
               <img
                 src={profile.links.avatar}
                 alt={profile.name}
                 className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-full object-cover object-[center_20%] border-2 border-white/20 bg-surface shadow-2xl"
               />
             </div>
+
             <div className="flex flex-col gap-1.5">
-              <div className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1 text-xs font-medium text-accent self-start">
-                <Sparkles size={13} aria-hidden="true" />
-                <span>Computer Science Student &bull; Full Stack Developer</span>
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3.5 py-1 text-xs font-medium text-emerald-300 self-start">
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>Open to Software Engineer Roles</span>
               </div>
-              <p className="text-xs text-zinc-400 font-medium pl-1">Chandigarh University &bull; Expected 2028</p>
+              <p className="text-xs text-zinc-400 font-medium pl-1">
+                Computer Science Undergraduate &bull; Chandigarh University (2028)
+              </p>
             </div>
           </motion.div>
 
+          {/* Dynamic Headline */}
           <motion.h1
             variants={item}
-            className="font-display text-[clamp(4rem,14vw,9.5rem)] font-semibold leading-[0.9] tracking-[-0.04em] text-white"
+            className="font-display text-[clamp(2.5rem,7vw,5.5rem)] font-bold leading-[1.04] tracking-[-0.03em] text-white"
           >
-            {profile.name}
+            Building reliable software, <br className="hidden sm:inline" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-accent-soft">
+              one problem at a time.
+            </span>
           </motion.h1>
 
-          <motion.div variants={item} className="mt-7 font-display text-2xl font-medium leading-tight tracking-tight sm:text-3xl lg:text-4xl">
-            {profile.roles.map((role, i) => (
-              <span key={role} className={`block ${roleTone[i]}`}>
-                {role}
-              </span>
-            ))}
+          {/* Rotating Specialty Treatment */}
+          <motion.div variants={item} className="mt-5 flex items-center gap-2.5 text-sm sm:text-base text-zinc-300">
+            <Terminal size={17} className="text-accent shrink-0" />
+            <span className="text-zinc-400">Specializing in:</span>
+            <div className="relative h-7 overflow-hidden inline-block min-w-[240px]">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={specialties[index]}
+                  initial={{ y: 16, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -16, opacity: 0 }}
+                  transition={{ duration: 0.35, ease: 'easeInOut' }}
+                  className="font-medium text-white block absolute"
+                >
+                  {specialties[index]}
+                </motion.span>
+              </AnimatePresence>
+            </div>
           </motion.div>
 
-          <motion.p variants={item} className="mt-6 max-w-xl text-base leading-relaxed text-zinc-300 md:text-lg">
+          <motion.p variants={item} className="mt-5 max-w-xl text-base leading-relaxed text-zinc-300 md:text-lg">
             {profile.summary}
           </motion.p>
 
-          <motion.div variants={item} className="mt-9 flex flex-wrap gap-3">
+          {/* Action CTAs */}
+          <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-3">
             <Button href="#projects" variant="primary" icon={ArrowDown}>
               View Projects
             </Button>
             <Button href={profile.links.github} external icon={Github}>
-              View GitHub
+              GitHub
             </Button>
             <Button href="#contact" icon={Mail}>
               Contact Me
             </Button>
-            <Button href={profile.links.resume} download icon={Download}>
-              Download Resume
-            </Button>
+            {profile.links.resume && (
+              <Button href={profile.links.resume} download icon={Download}>
+                Download Resume
+              </Button>
+            )}
           </motion.div>
         </motion.div>
 
@@ -84,36 +124,43 @@ export default function Hero() {
           aria-label="Highlights"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="glass rounded-2xl p-6 sm:p-7 shadow-xl"
+          transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="glass rounded-2xl p-6 sm:p-7 shadow-xl border border-white/10"
         >
-          <div className="flex items-center gap-2 text-sm text-zinc-400">
-            <Trophy size={16} className="text-accent" aria-hidden="true" />
-            <span>Problem Solving</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 text-sm text-zinc-400">
+              <Trophy size={16} className="text-accent" aria-hidden="true" />
+              <span>Competitive Programming</span>
+            </div>
+            <span className="rounded-md border border-accent/30 bg-accent/10 px-2 py-0.5 text-[11px] font-mono text-accent">
+              Active Solver
+            </span>
           </div>
-          <p className="mt-3 font-display text-6xl font-semibold tracking-tight text-white sm:text-7xl">
+
+          <p className="mt-4 font-display text-6xl font-bold tracking-tight text-white sm:text-7xl">
             {profile.leetcodeSolved}+
           </p>
-          <p className="mt-1 text-base text-zinc-200 font-medium">LeetCode problems solved</p>
-          <p className="text-sm text-zinc-400">in {profile.leetcodeLanguages.join(' and ')}</p>
+          <p className="mt-1 text-base text-zinc-200 font-medium">LeetCode Problems Solved</p>
+          <p className="text-sm text-zinc-400">Practicing regularly in {profile.leetcodeLanguages.join(' and ')}</p>
 
           <a
             href={profile.links.leetcode}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex text-sm font-medium text-accent underline-offset-4 hover:underline"
+            className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-accent underline-offset-4 hover:underline"
           >
-            View LeetCode profile &rarr;
+            <span>View LeetCode profile</span>
+            <span>&rarr;</span>
           </a>
 
           <ul className="mt-6 space-y-3.5 border-t border-white/10 pt-5 text-sm text-zinc-300">
             <li className="flex gap-3">
               <GraduationCap size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
-              <span>B.E. Computer Science, Chandigarh University (expected 2028)</span>
+              <span>B.E. Computer Science, Chandigarh University (expected 2028, CGPA 8.0)</span>
             </li>
             <li className="flex gap-3">
               <Database size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
-              <span>Data Science intern, Algoson – GraveAngels</span>
+              <span>Data Science Intern, Algoson – GraveAngels</span>
             </li>
           </ul>
         </motion.aside>

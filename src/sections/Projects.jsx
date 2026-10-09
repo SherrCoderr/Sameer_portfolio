@@ -1,10 +1,15 @@
-import { Check, Github, ExternalLink, Circle, Sparkles } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Check, Github, ExternalLink, Circle, Sparkles, Layers, Info } from 'lucide-react';
 import Section from '../components/Section.jsx';
 import Reveal from '../components/Reveal.jsx';
 import SpotlightCard from '../components/SpotlightCard.jsx';
 import Button from '../components/Button.jsx';
 import Tag from '../components/Tag.jsx';
+import ProjectModal from '../components/ProjectModal.jsx';
 import { projects } from '../data/projects.js';
+
+const filterCategories = ['All Projects', 'Featured', 'Full-Stack', 'Analytics'];
 
 function StatusBadge({ status }) {
   const isLive = status.tone === 'live';
@@ -26,18 +31,18 @@ function StatusBadge({ status }) {
   );
 }
 
-function ProjectCard({ project, isTopHero = false }) {
+function ProjectCard({ project, isTopHero = false, onOpenModal }) {
   return (
-    <SpotlightCard as="article" className="flex h-full flex-col border-white/10 bg-surface/90 hover:border-accent/40">
+    <SpotlightCard as="article" className="flex h-full flex-col border-white/10 bg-surface/90 hover:border-accent/40 group">
       {/* Browser chrome header bar */}
-      <div className="flex items-center justify-between gap-3 border-b border-white/10 bg-white/[0.02] px-5 py-3">
+      <div className="flex items-center justify-between gap-3 border-b border-white/10 bg-white/[0.02] px-5 py-3.5">
         <div className="flex items-center gap-2">
           <div className="flex gap-1.5" aria-hidden="true">
             <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
             <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
             <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
           </div>
-          <span className="ml-2 hidden max-w-[220px] truncate rounded-md bg-black/40 px-2.5 py-0.5 text-xs text-zinc-400 sm:inline-block sm:max-w-xs">
+          <span className="ml-2 hidden max-w-[200px] truncate rounded-md bg-black/40 px-2.5 py-0.5 text-xs text-zinc-400 sm:inline-block sm:max-w-xs font-mono">
             {project.chrome}
           </span>
         </div>
@@ -74,17 +79,14 @@ function ProjectCard({ project, isTopHero = false }) {
 
           {isTopHero && (
             <div className="hidden lg:flex shrink-0 items-center gap-3 pt-2">
-              {project.liveDemo && (
-                <Button
-                  href={project.liveDemo}
-                  external
-                  variant="primary"
-                  icon={ExternalLink}
-                  size="md"
-                >
-                  Live Demo
-                </Button>
-              )}
+              <Button
+                onClick={() => onOpenModal(project)}
+                variant="secondary"
+                icon={Info}
+                size="md"
+              >
+                Architecture
+              </Button>
               {project.github && (
                 <Button
                   href={project.github}
@@ -94,6 +96,17 @@ function ProjectCard({ project, isTopHero = false }) {
                   size="md"
                 >
                   GitHub
+                </Button>
+              )}
+              {project.liveDemo && (
+                <Button
+                  href={project.liveDemo}
+                  external
+                  variant="primary"
+                  icon={ExternalLink}
+                  size="md"
+                >
+                  Live Demo
                 </Button>
               )}
             </div>
@@ -153,6 +166,15 @@ function ProjectCard({ project, isTopHero = false }) {
               GitHub
             </Button>
           )}
+          <Button
+            onClick={() => onOpenModal(project)}
+            variant="quiet"
+            icon={Info}
+            size="sm"
+            className="border border-white/10 px-3 py-2 text-xs"
+          >
+            Details
+          </Button>
         </div>
       </div>
     </SpotlightCard>
@@ -160,60 +182,105 @@ function ProjectCard({ project, isTopHero = false }) {
 }
 
 export default function Projects() {
-  const flagshipProjects = projects.filter((p) => p.featured);
-  const otherProjects = projects.filter((p) => !p.featured);
+  const [activeFilter, setActiveFilter] = useState('All Projects');
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const filteredProjects = projects.filter((p) => {
+    if (activeFilter === 'All Projects') return true;
+    if (activeFilter === 'Featured') return p.featured;
+    if (activeFilter === 'Full-Stack') return p.category === 'Full-Stack';
+    if (activeFilter === 'Analytics') return p.category === 'Analytics';
+    return true;
+  });
+
+  const flagshipProjects = filteredProjects.filter((p) => p.featured);
+  const otherProjects = filteredProjects.filter((p) => !p.featured);
 
   return (
     <Section
       id="projects"
-      title="Projects"
-      intro="Production full-stack applications and real-world software projects built with modern frameworks and robust backend architectures."
+      title="Featured Projects"
+      intro="Production full-stack applications and real-world software platforms built with modern frontend frameworks and robust distributed backend architectures."
     >
+      {/* Category Filter Tabs */}
+      <div className="mb-10 flex flex-wrap items-center gap-2">
+        {filterCategories.map((cat) => (
+          <button
+            key={cat}
+            type="button"
+            onClick={() => setActiveFilter(cat)}
+            className={`rounded-full px-4 py-2 text-xs font-medium transition-all duration-200 ${
+              activeFilter === cat
+                ? 'bg-accent text-ink font-semibold shadow-lg shadow-accent/20'
+                : 'border border-white/10 bg-white/[0.03] text-zinc-400 hover:border-white/20 hover:text-white'
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
       {/* Flagship projects grid */}
       <div className="space-y-12">
-        <div>
-          <div className="mb-6 flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-accent" />
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-300">
-              Featured Flagship Projects
-            </h3>
+        {flagshipProjects.length > 0 && (
+          <div>
+            <div className="mb-6 flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-accent" />
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-300">
+                Core Production Platforms
+              </h3>
+            </div>
+            <ul className="grid gap-8 lg:grid-cols-2">
+              {flagshipProjects.map((project, i) => {
+                const isTopHero = i === 0 && flagshipProjects.length % 2 === 1;
+                return (
+                  <Reveal
+                    key={project.id || project.name}
+                    as="li"
+                    delay={i * 0.1}
+                    className={isTopHero ? 'lg:col-span-2' : ''}
+                  >
+                    <ProjectCard
+                      project={project}
+                      isTopHero={isTopHero}
+                      onOpenModal={setSelectedProject}
+                    />
+                  </Reveal>
+                );
+              })}
+            </ul>
           </div>
-          <ul className="grid gap-8 lg:grid-cols-2">
-            {flagshipProjects.map((project, i) => {
-              const isTopHero = i === 0 && flagshipProjects.length % 2 === 1;
-              return (
-                <Reveal
-                  key={project.id || project.name}
-                  as="li"
-                  delay={i * 0.1}
-                  className={isTopHero ? 'lg:col-span-2' : ''}
-                >
-                  <ProjectCard project={project} isTopHero={isTopHero} />
-                </Reveal>
-              );
-            })}
-          </ul>
-        </div>
+        )}
 
         {/* Other projects */}
         {otherProjects.length > 0 && (
           <div className="border-t border-white/10 pt-10">
             <div className="mb-6 flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-zinc-500" />
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
-                Additional Projects
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+                Additional Tools & Systems
               </h3>
             </div>
             <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {otherProjects.map((project, i) => (
                 <Reveal key={project.id || project.name} as="li" delay={i * 0.08}>
-                  <ProjectCard project={project} />
+                  <ProjectCard
+                    project={project}
+                    onOpenModal={setSelectedProject}
+                  />
                 </Reveal>
               ))}
             </ul>
           </div>
         )}
       </div>
+
+      {/* Architecture Deep Dive Modal */}
+      <ProjectModal
+        project={selectedProject}
+        isOpen={Boolean(selectedProject)}
+        onClose={() => setSelectedProject(null)}
+      />
     </Section>
   );
 }

@@ -7,7 +7,7 @@ const interests = [
   {
     icon: Layers,
     title: 'Full Stack Engineering',
-    text: 'Building end-to-end web applications with React, Spring Boot, Java, and PostgreSQL.',
+    text: 'Building end-to-end web applications with React, Spring Boot, Java, PostgreSQL, and Redis.',
   },
   {
     icon: Binary,
@@ -17,12 +17,12 @@ const interests = [
   {
     icon: Server,
     title: 'Backend & System Architecture',
-    text: 'Designing RESTful APIs, WebSockets/STOMP messaging, authentication, and relational schemas.',
+    text: 'Designing REST APIs, Spring Security/JWT, WebSockets/STOMP, and concurrency-safe transactions.',
   },
   {
     icon: Code2,
-    title: 'Clean Code & Engineering',
-    text: 'Writing modular, maintainable, production-ready code with strong attention to detail.',
+    title: 'Clean Code & DevOps',
+    text: 'Containerization with Docker, automated testing, and database version control with Flyway.',
   },
 ];
 
@@ -41,8 +41,8 @@ export default function About() {
         <ul className="grid gap-4 sm:grid-cols-2">
           {interests.map(({ icon: Icon, title, text }, i) => (
             <Reveal key={title} as="li" delay={i * 0.07}>
-              <div className="h-full rounded-2xl border border-white/10 bg-surface/90 p-5 transition-colors hover:border-accent/40">
-                <span className="grid h-10 w-10 place-items-center rounded-xl border border-accent/20 bg-accent/10 text-accent">
+              <div className="h-full rounded-2xl border border-white/10 bg-surface/90 p-5 transition-colors hover:border-accent/40 group">
+                <span className="grid h-10 w-10 place-items-center rounded-xl border border-accent/20 bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-ink">
                   <Icon size={20} aria-hidden="true" />
                 </span>
                 <h3 className="mt-4 font-display text-lg font-semibold text-white">{title}</h3>

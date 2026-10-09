@@ -23,6 +23,7 @@ export const projects = [
     id: 'smart-inventory-management-system',
     name: 'Smart Inventory Management System',
     featured: true,
+    category: 'Full-Stack',
     tagline: 'Enterprise Full-Stack Platform',
     chrome: 'smart-inventory-management-system-flame.vercel.app',
     description:
@@ -43,6 +44,14 @@ export const projects = [
       'Containerized with Docker and verified with 57 automated backend tests',
       'Production deployment with React on Vercel, Spring Boot on Render, and Neon PostgreSQL',
     ],
+    architecture: {
+      auth: 'JWT-based authentication with Spring Security & role hierarchy (Admin / Employee)',
+      concurrency: 'Database-level transactional isolation & optimistic locking for safe stock operations',
+      caching: 'Redis key-value caching with event-driven invalidation on stock mutations',
+      persistence: 'PostgreSQL with JPA/Hibernate ORM and relational schema constraints',
+      testing: '57 automated backend unit & integration tests',
+      deployment: 'Docker containerized backend on Render, React frontend on Vercel, Neon PostgreSQL',
+    },
     status: {
       label: 'Live',
       tone: 'live',
@@ -55,6 +64,7 @@ export const projects = [
     id: 'job-portal-resume-analyzer',
     name: 'Job Portal & Resume Analyzer',
     featured: true,
+    category: 'Full-Stack',
     tagline: 'Flagship Full-Stack Platform',
     chrome: 'job-portal-resume-analyzer-seven.vercel.app',
     description:
@@ -78,6 +88,13 @@ export const projects = [
       'PostgreSQL persistence via JPA/Hibernate with Neon cloud database and environment-based config',
       'Production deployment with React frontend on Vercel and Spring Boot backend on Render',
     ],
+    architecture: {
+      auth: 'Role-based access control (Job Seeker, Recruiter, Admin) with JWT & BCrypt',
+      matching: 'Automated skill extraction algorithms matching candidate resumes to job descriptions',
+      tracking: 'Multi-stage application status pipeline with recruiter feedback workflow',
+      persistence: 'PostgreSQL relational database via JPA/Hibernate ORM',
+      deployment: 'React SPA on Vercel, Java Spring Boot REST API on Render, Neon Cloud DB',
+    },
     status: {
       label: 'Live',
       tone: 'live',
@@ -90,6 +107,7 @@ export const projects = [
     id: 'splitwisex',
     name: 'SplitWiseX',
     featured: true,
+    category: 'Full-Stack',
     tagline: 'Featured Full-Stack Application',
     chrome: 'split-wise-x-navy.vercel.app',
     description:
@@ -113,6 +131,13 @@ export const projects = [
       'PostgreSQL persistence with JPA/Hibernate and Flyway database migrations',
       'Dockerized backend with production deployment on Render and React on Vercel',
     ],
+    architecture: {
+      algorithm: 'Greedy transaction minimization algorithm simplifying multi-party debt graphs',
+      realtime: 'Bi-directional STOMP over WebSockets for instant expense balance sync',
+      migrations: 'Version-controlled database schema evolution using Flyway migrations',
+      persistence: 'PostgreSQL with JPA/Hibernate and transactional integrity',
+      deployment: 'Docker containerized backend on Render, React frontend on Vercel',
+    },
     status: {
       label: 'Live',
       tone: 'live',
@@ -125,6 +150,7 @@ export const projects = [
     id: 'web-traffic-analyzer',
     name: 'Web Traffic Analyzer',
     featured: false,
+    category: 'Analytics',
     tagline: 'Web Analytics Tool',
     chrome: 'traffic-analyzer-vert.vercel.app',
     description:
@@ -136,6 +162,11 @@ export const projects = [
       'Responsive analytics interface for pattern visualization',
       'Deployed publicly on Vercel',
     ],
+    architecture: {
+      backend: 'Node.js server handling traffic logging and data processing',
+      frontend: 'Responsive web interface for real-time traffic metric visualization',
+      deployment: 'Deployed publicly on Vercel serverless platform',
+    },
     status: {
       label: 'Live',
       tone: 'live',
