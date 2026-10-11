@@ -30,7 +30,7 @@ export default function About() {
   return (
     <Section id="about" title="About Me" intro="Background, technical focus, and engineering problem-solving philosophy.">
       <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-14">
-        <div className="space-y-5 text-base leading-relaxed text-slate-600 md:text-lg">
+        <div className="space-y-5 text-base leading-relaxed text-slate-600 dark:text-slate-300 md:text-lg">
           {aboutParagraphs.map((p, i) => (
             <Reveal key={i} delay={i * 0.06} as="p">
               {p}
@@ -41,12 +41,12 @@ export default function About() {
         <ul className="grid gap-4 sm:grid-cols-2">
           {interests.map(({ icon: Icon, title, text }, i) => (
             <Reveal key={title} as="li" delay={i * 0.07}>
-              <div className="h-full rounded-2xl border border-slate-200/90 bg-white p-5 transition-all duration-300 hover:border-blue-300 hover:shadow-card-hover group shadow-xs">
-                <span className="grid h-10 w-10 place-items-center rounded-xl border border-blue-200 bg-blue-50 text-accent transition-colors group-hover:bg-accent group-hover:text-white">
+              <div className="h-full rounded-2xl border border-slate-200/90 bg-white p-5 transition-all duration-300 hover:border-blue-300 hover:shadow-card-hover dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/50 group shadow-xs">
+                <span className="grid h-10 w-10 place-items-center rounded-xl border border-blue-200 bg-blue-50 text-accent dark:border-blue-900/60 dark:bg-blue-950/60 dark:text-blue-400 transition-colors group-hover:bg-accent group-hover:text-white">
                   <Icon size={20} aria-hidden="true" />
                 </span>
-                <h3 className="mt-4 font-display text-lg font-bold text-slate-900">{title}</h3>
-                <p className="mt-2 text-xs leading-relaxed text-slate-600 sm:text-sm">{text}</p>
+                <h3 className="mt-4 font-display text-lg font-bold text-slate-900 dark:text-white">{title}</h3>
+                <p className="mt-2 text-xs leading-relaxed text-slate-600 dark:text-slate-300 sm:text-sm">{text}</p>
               </div>
             </Reveal>
           ))}

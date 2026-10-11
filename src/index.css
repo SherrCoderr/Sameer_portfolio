@@ -8,14 +8,21 @@
     background-color: #F8FAFC;
     color-scheme: light;
   }
+  html.dark {
+    background-color: #030712;
+    color-scheme: dark;
+  }
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
     }
   }
   body {
-    @apply bg-slate-50 font-sans text-slate-600 antialiased;
+    @apply bg-slate-50 font-sans text-slate-600 antialiased transition-colors duration-200;
     overflow-x: clip;
+  }
+  html.dark body {
+    @apply bg-slate-950 text-slate-300;
   }
   section[id] {
     scroll-margin-top: 4.5rem;
@@ -23,6 +30,10 @@
   ::selection {
     background: rgb(37 99 235 / 0.15);
     color: #0F172A;
+  }
+  html.dark ::selection {
+    background: rgb(37 99 235 / 0.35);
+    color: #F8FAFC;
   }
   :focus-visible {
     outline: 2px solid #2563EB;
@@ -38,6 +49,9 @@
   .glass {
     @apply border border-slate-200/80 bg-white/80 backdrop-blur-md shadow-sm;
   }
+  .dark .glass {
+    @apply border-slate-800/80 bg-slate-900/80 shadow-none;
+  }
   .hero-grid {
     background-image:
       linear-gradient(to right, rgb(15 23 42 / 0.035) 1px, transparent 1px),
@@ -45,6 +59,11 @@
     background-size: 48px 48px;
     mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 75%);
     -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 75%);
+  }
+  .dark .hero-grid {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
   }
 }
 

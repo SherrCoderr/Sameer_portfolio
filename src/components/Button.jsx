@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 
 const variants = {
   primary: 'bg-accent text-white hover:bg-accent-hover shadow-sm shadow-blue-500/20 active:scale-[0.98]',
-  secondary: 'border border-slate-200/90 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-900 shadow-xs active:scale-[0.98]',
-  quiet: 'text-slate-600 hover:text-accent hover:bg-blue-50/80',
+  secondary: 'border border-slate-200/90 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-900 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:border-slate-700 dark:hover:text-white shadow-xs active:scale-[0.98]',
+  quiet: 'text-slate-600 hover:text-accent hover:bg-blue-50/80 dark:text-slate-400 dark:hover:text-blue-400 dark:hover:bg-slate-800/80',
 };
 
 const sizes = {

@@ -33,12 +33,16 @@ export default function Hero() {
   }, [shouldReduceMotion]);
 
   return (
-    <section id="top" aria-label="Introduction" className="relative isolate overflow-hidden pt-28 md:pt-36 bg-gradient-to-b from-blue-50/50 via-slate-50/30 to-slate-50">
+    <section
+      id="top"
+      aria-label="Introduction"
+      className="relative isolate overflow-hidden pt-28 md:pt-36 bg-gradient-to-b from-blue-50/50 via-slate-50/30 to-slate-50 dark:from-blue-950/20 dark:via-slate-950 dark:to-slate-950"
+    >
       {/* Background: subtle grid + ambient radial glow */}
       <div aria-hidden="true" className="hero-grid absolute inset-0 -z-10" />
       <div
         aria-hidden="true"
-        className="animate-drift absolute -top-40 left-1/2 -z-10 h-[520px] w-[720px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-blue-400/10 via-violet-400/10 to-transparent blur-[120px]"
+        className="animate-drift absolute -top-40 left-1/2 -z-10 h-[520px] w-[720px] -translate-x-1/2 rounded-full bg-gradient-to-tr from-blue-400/10 via-violet-400/10 to-transparent blur-[120px] dark:from-blue-500/10 dark:via-violet-500/10"
       />
 
       <div className="container-page grid items-end gap-12 pb-20 md:pb-28 lg:grid-cols-[1.75fr_1fr] lg:gap-10">
@@ -50,16 +54,16 @@ export default function Hero() {
               <img
                 src={profile.links.avatar}
                 alt={profile.name}
-                className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-full object-cover object-[center_20%] border-2 border-white shadow-lg ring-4 ring-blue-500/15 bg-white"
+                className="relative h-20 w-20 sm:h-24 sm:w-24 rounded-full object-cover object-[center_20%] border-2 border-white dark:border-slate-800 shadow-lg ring-4 ring-blue-500/15 dark:ring-blue-500/30 bg-white dark:bg-slate-900"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3.5 py-1 text-xs font-semibold text-emerald-700 self-start shadow-xs">
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3.5 py-1 text-xs font-semibold text-emerald-700 self-start shadow-xs dark:border-emerald-800/60 dark:bg-emerald-950/40 dark:text-emerald-300">
                 <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>Open to Software Engineer Roles</span>
               </div>
-              <p className="text-xs text-slate-500 font-medium pl-1">
+              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium pl-1">
                 Computer Science Undergraduate &bull; Chandigarh University (2028)
               </p>
             </div>
@@ -68,18 +72,18 @@ export default function Hero() {
           {/* Dynamic Headline */}
           <motion.h1
             variants={item}
-            className="font-display text-[clamp(2.5rem,7vw,5.25rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-slate-900"
+            className="font-display text-[clamp(2.5rem,7vw,5.25rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-slate-900 dark:text-white"
           >
             Building reliable software, <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 dark:from-blue-400 dark:via-indigo-400 dark:to-violet-400">
               one problem at a time.
             </span>
           </motion.h1>
 
           {/* Rotating Specialty Treatment */}
-          <motion.div variants={item} className="mt-5 flex items-center gap-2.5 text-sm sm:text-base text-slate-700">
-            <Terminal size={17} className="text-accent shrink-0" />
-            <span className="text-slate-500 font-medium">Specializing in:</span>
+          <motion.div variants={item} className="mt-5 flex items-center gap-2.5 text-sm sm:text-base text-slate-700 dark:text-slate-300">
+            <Terminal size={17} className="text-accent dark:text-blue-400 shrink-0" />
+            <span className="text-slate-500 dark:text-slate-400 font-medium">Specializing in:</span>
             <div className="relative h-7 overflow-hidden inline-block min-w-[240px]">
               <AnimatePresence mode="wait">
                 <motion.span
@@ -88,7 +92,7 @@ export default function Hero() {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -16, opacity: 0 }}
                   transition={{ duration: 0.35, ease: 'easeInOut' }}
-                  className="font-semibold text-slate-900 block absolute"
+                  className="font-semibold text-slate-900 dark:text-white block absolute"
                 >
                   {specialties[index]}
                 </motion.span>
@@ -96,7 +100,20 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          <motion.p variants={item} className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 md:text-lg">
+          {/* Currently Exploring / Building Badge */}
+          <motion.div
+            variants={item}
+            className="mt-3.5 inline-flex flex-wrap items-center gap-2 rounded-xl border border-slate-200/80 bg-white/80 px-3 py-1.5 text-xs text-slate-600 backdrop-blur-xs shadow-2xs dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-300"
+          >
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+            </span>
+            <span className="font-bold text-slate-800 dark:text-slate-200">Currently exploring:</span>
+            <span>Distributed Systems &bull; Kafka &bull; System Design</span>
+          </motion.div>
+
+          <motion.p variants={item} className="mt-5 max-w-xl text-base leading-relaxed text-slate-600 dark:text-slate-300 md:text-lg">
             {profile.summary}
           </motion.p>
 
@@ -125,41 +142,41 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-xs hover:shadow-card-hover transition-all duration-300"
+          className="rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-7 shadow-xs hover:shadow-card-hover transition-all duration-300 dark:border-slate-800 dark:bg-slate-900"
         >
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-              <Trophy size={16} className="text-accent" aria-hidden="true" />
+            <div className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
+              <Trophy size={16} className="text-accent dark:text-blue-400" aria-hidden="true" />
               <span>Competitive Programming</span>
             </div>
-            <span className="rounded-md border border-blue-200 bg-blue-50 px-2 py-0.5 text-[11px] font-mono font-semibold text-accent">
+            <span className="rounded-md border border-blue-200 bg-blue-50 px-2 py-0.5 text-[11px] font-mono font-semibold text-accent dark:border-blue-900/60 dark:bg-blue-950/50 dark:text-blue-400">
               Active Solver
             </span>
           </div>
 
-          <p className="mt-4 font-display text-6xl font-extrabold tracking-tight text-slate-900 sm:text-7xl">
+          <p className="mt-4 font-display text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-7xl">
             {profile.leetcodeSolved}+
           </p>
-          <p className="mt-1 text-base text-slate-800 font-semibold">LeetCode Problems Solved</p>
-          <p className="text-sm text-slate-500">Practicing regularly in {profile.leetcodeLanguages.join(' and ')}</p>
+          <p className="mt-1 text-base text-slate-800 dark:text-slate-200 font-semibold">LeetCode Problems Solved</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">Practicing regularly in {profile.leetcodeLanguages.join(' and ')}</p>
 
           <a
             href={profile.links.leetcode}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent underline-offset-4 hover:text-accent-hover hover:underline"
+            className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent dark:text-blue-400 underline-offset-4 hover:text-accent-hover dark:hover:text-blue-300 hover:underline"
           >
             <span>View LeetCode profile</span>
             <span>&rarr;</span>
           </a>
 
-          <ul className="mt-6 space-y-3.5 border-t border-slate-100 pt-5 text-sm text-slate-700">
+          <ul className="mt-6 space-y-3.5 border-t border-slate-100 dark:border-slate-800 pt-5 text-sm text-slate-700 dark:text-slate-300">
             <li className="flex gap-3">
-              <GraduationCap size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
+              <GraduationCap size={18} className="mt-0.5 shrink-0 text-accent dark:text-blue-400" aria-hidden="true" />
               <span>B.E. Computer Science, Chandigarh University (expected 2028, CGPA 8.0)</span>
             </li>
             <li className="flex gap-3">
-              <Database size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
+              <Database size={18} className="mt-0.5 shrink-0 text-accent dark:text-blue-400" aria-hidden="true" />
               <span>Data Science Intern, Algoson – GraveAngels</span>
             </li>
           </ul>

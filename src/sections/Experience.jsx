@@ -15,7 +15,7 @@ export default function Experience() {
     <Section id="experience" title="Experience" intro="Professional internship and hands-on data science & engineering work.">
       <div ref={ref} className="relative pl-10 sm:pl-14">
         {/* Timeline line */}
-        <div aria-hidden="true" className="absolute bottom-0 left-[15px] top-2 w-px bg-slate-200 sm:left-[19px]" />
+        <div aria-hidden="true" className="absolute bottom-0 left-[15px] top-2 w-px bg-slate-200 dark:bg-slate-800 sm:left-[19px]" />
         <motion.div
           aria-hidden="true"
           style={{ scaleY: lineScale }}
@@ -27,35 +27,35 @@ export default function Experience() {
             <li key={job.role} className="relative">
               <span
                 aria-hidden="true"
-                className="absolute -left-10 top-1 grid h-8 w-8 place-items-center rounded-full border border-blue-300 bg-blue-50 text-accent sm:-left-14 sm:h-10 sm:w-10 shadow-xs"
+                className="absolute -left-10 top-1 grid h-8 w-8 place-items-center rounded-full border border-blue-300 bg-blue-50 text-accent dark:border-blue-900/60 dark:bg-blue-950/60 dark:text-blue-400 sm:-left-14 sm:h-10 sm:w-10 shadow-xs"
               >
                 <Briefcase size={16} />
               </span>
 
               <Reveal>
-                <article className="rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-xs hover:border-blue-300 hover:shadow-card-hover transition-all duration-300">
+                <article className="rounded-2xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-xs hover:border-blue-300 hover:shadow-card-hover dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/50 transition-all duration-300">
                   <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-2">
                     <div>
-                      <h3 className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                      <h3 className="font-display text-2xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-3xl">
                         {job.role}
                       </h3>
-                      <p className="mt-1 text-base font-semibold text-slate-700">{job.company}</p>
+                      <p className="mt-1 text-base font-semibold text-slate-700 dark:text-slate-300">{job.company}</p>
                     </div>
-                    <p className="text-xs font-semibold uppercase tracking-wider rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-600">
+                    <p className="text-xs font-semibold uppercase tracking-wider rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-600 dark:border-slate-800 dark:bg-slate-800/80 dark:text-slate-400">
                       {job.period}
                     </p>
                   </div>
 
                   <ul className="mt-6 space-y-3">
                     {job.responsibilities.map((r) => (
-                      <li key={r} className="flex gap-3 text-sm leading-relaxed text-slate-700 sm:text-base">
-                        <Check size={16} className="mt-1 shrink-0 text-accent" aria-hidden="true" />
+                      <li key={r} className="flex gap-3 text-sm leading-relaxed text-slate-700 dark:text-slate-300 sm:text-base">
+                        <Check size={16} className="mt-1 shrink-0 text-accent dark:text-blue-400" aria-hidden="true" />
                         <span>{r}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="mt-7 flex flex-wrap items-center justify-between gap-4 border-t border-slate-100 pt-5">
+                  <div className="mt-7 flex flex-wrap items-center justify-between gap-4 border-t border-slate-100 dark:border-slate-800 pt-5">
                     <ul className="flex flex-wrap gap-2" aria-label="Skills used">
                       {job.tags.map((t) => (
                         <li key={t}>
@@ -68,7 +68,7 @@ export default function Experience() {
                         href={job.certificate}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent underline-offset-4 hover:text-accent-hover hover:underline"
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent dark:text-blue-400 underline-offset-4 hover:text-accent-hover dark:hover:text-blue-300 hover:underline"
                       >
                         <FileText size={15} aria-hidden="true" />
                         View Certificate &rarr;
